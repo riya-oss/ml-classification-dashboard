@@ -13,7 +13,7 @@ streamlit run app.py
 ## Directory Layout
 
 ```
-ml-assignment-2/                        ← project root
+ml-classification-dashboard/            ← project root
 │
 ├── app.py                              ← Home page + Streamlit entry point
 │
@@ -22,11 +22,10 @@ ml-assignment-2/                        ← project root
 │   ├── 2_Predictions.py                ← Page 2
 │   └── 3_Model_Insights.py             ← Page 3
 │
-└── streamlit_app/                      ← Backend / shared utilities
-    ├── utils.py                        ← Loaders, inference, validation helpers
-    └── components/
-        ├── metrics.py                  ← KPI cards, train/test table
-        └── plots.py                    ← Matplotlib/Seaborn chart functions
+├── utils.py                            ← Loaders, inference, validation helpers
+└── components/
+       ├── metrics.py                      ← KPI cards, train/test table
+       └── plots.py                        ← Matplotlib/Seaborn chart functions
 ```
 
 ---
@@ -36,9 +35,8 @@ ml-assignment-2/                        ← project root
 Every file in `pages/` adds two directories to `sys.path` at startup:
 
 ```python
-_ROOT    = Path(__file__).resolve().parents[1]   # ml-assignment-2/
-_APP_DIR = _ROOT / "streamlit_app"               # streamlit_app/
-for _p in [str(_APP_DIR), str(_ROOT / "src")]:
+_ROOT = Path(__file__).resolve().parents[1]   # ml-classification-dashboard/
+for _p in [str(_ROOT), str(_ROOT / "src")]:
     if _p not in sys.path:
         sys.path.insert(0, _p)
 ```
@@ -46,8 +44,8 @@ for _p in [str(_APP_DIR), str(_ROOT / "src")]:
 This means all pages can do bare imports:
 
 ```python
-from utils import load_all_model_metrics    # resolves to streamlit_app/utils.py
-from components.plots import plot_roc_curve  # resolves to streamlit_app/components/plots.py
+from utils import load_all_model_metrics    # resolves to root utils.py
+from components.plots import plot_roc_curve  # resolves to root components/plots.py
 from features.preprocess import prepare     # resolves to src/features/preprocess.py
 ```
 
@@ -119,7 +117,7 @@ Single-model deep-dive, driven by a `st.selectbox`.
 
 ---
 
-## Shared Backend (`streamlit_app/`)
+## Shared Backend (root modules)
 
 ### `utils.py`
 

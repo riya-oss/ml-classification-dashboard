@@ -7,9 +7,8 @@ import sys
 from pathlib import Path
 
 # ── Path setup ──────────────────────────────────────────────────────────────────
-_ROOT    = Path(__file__).resolve().parents[1]   # ml-assignment-2/
-_APP_DIR = _ROOT / "streamlit_app"               # utils + components
-for _p in [str(_APP_DIR), str(_ROOT / "src")]:
+_ROOT = Path(__file__).resolve().parents[1]
+for _p in [str(_ROOT), str(_ROOT / "src")]:
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
@@ -59,15 +58,21 @@ st.subheader("Step 1 — Upload Dataset")
 uploaded = st.file_uploader(
     "Upload a CSV file",
     type=["csv"],
-    help="Must be a CSV with the same schema as the IBM Telco Customer Churn dataset.",
+    help="For assignment grading, upload only `test_data.csv` (same schema as the IBM Telco Customer Churn dataset).",
 )
 
 if uploaded is None:
     st.info(
-        "No file uploaded yet. You can use `data/raw/` or `data/processed/` files "
-        "for a quick test."
+        "No file uploaded yet. For assignment compliance, upload `test_data.csv` "
+        "from the repository root."
     )
     st.stop()
+
+if uploaded.name != "test_data.csv":
+    st.warning(
+        "Assignment note: expected upload file is `test_data.csv`. "
+        "Continuing with the provided CSV."
+    )
 
 # ── Upload validation + Testing section ───────────────────────────────────────
 st.subheader("🧪 Upload Validation")
@@ -144,11 +149,12 @@ if not _critical_pass:
     st.stop()
 
 if not _cols_ok:
-    st.warning(
+    st.error(
         f"⚠️ {len(_missing)} required column(s) are missing. "
-        "Predictions may fail or produce incorrect results. "
+        "Predictions are blocked to avoid invalid evaluation. "
         f"Missing: `{'`, `'.join(_missing)}`"
     )
+    st.stop()
 
 # ── Step 2: Dataset Preview ────────────────────────────────────────────────────
 st.subheader("Step 2 — Dataset Preview")
@@ -255,7 +261,42 @@ else:
         "Add a `Churn Label` column (Yes/No or 1/0) to enable them."
     )
 
-# ── Step 9: Download ───────────────────────────────────────────────────────────
+if has_labels:
+    st.subheader("Step 9 — Cross-Model Results on Uploaded Test Data")
+    st.caption(
+        "Assignment check: results of different models on the uploaded test data."
+    )
+
+    from sklearn.metrics import (
+        accuracy_score, f1_score, matthews_corrcoef,
+        precision_score, recall_score, roc_auc_score,
+    )
+
+    compare_rows = []
+    for model_name in MODEL_REGISTRY.keys():
+        model_results = run_inference(df_raw.copy(), model_name)
+        if model_results is None:
+            continue
+
+        m_pred = model_results["Churn Prediction"].values
+        m_proba = model_results["Churn Probability"].values
+        compare_rows.append({
+            "Model": model_name,
+            "Accuracy": round(accuracy_score(y_true, m_pred), 4),
+            "AUC": round(roc_auc_score(y_true, m_proba), 4),
+            "Precision": round(precision_score(y_true, m_pred, zero_division=0), 4),
+            "Recall": round(recall_score(y_true, m_pred, zero_division=0), 4),
+            "F1": round(f1_score(y_true, m_pred, zero_division=0), 4),
+            "MCC": round(matthews_corrcoef(y_true, m_pred), 4),
+        })
+
+    if compare_rows:
+        compare_df = pd.DataFrame(compare_rows).sort_values("AUC", ascending=False)
+        st.dataframe(compare_df, width="stretch", hide_index=True)
+    else:
+        st.warning("Could not compute cross-model comparison on uploaded test data.")
+
+# ── Step 10: Download ──────────────────────────────────────────────────────────
 st.subheader("Download Results")
 
 csv_buffer = io.StringIO()

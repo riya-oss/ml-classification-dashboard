@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ml-assignment-2"
+name = "ml-classification-dashboard"
 version = "0.1.0"
-description = "Machine learning assignment project scaffold"
+description = "Telco churn machine learning dashboard for assignment 2"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [

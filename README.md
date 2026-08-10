@@ -52,7 +52,7 @@ Customer churn — voluntary cancellation or switching to a competitor — is on
 
 ## GitHub Repository
 
-> **https://github.com/riya-thakur/ml-assignment-2**
+> **https://github.com/riya-oss/ml-classification-dashboard**
 
 ---
 
@@ -140,14 +140,16 @@ Random Forest is the recommended production model because:
 
 ## Streamlit Application
 
-> ### 🚀 Live App: https://ml-assignment-2-riya.streamlit.app
+> ### 🚀 Live App: TO_BE_UPDATED_AFTER_PUBLIC_DEPLOYMENT
+
+Deployment target (required by assignment): **Streamlit Community Cloud**
 
 ### Run Locally
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/riya-thakur/ml-assignment-2.git
-cd ml-assignment-2
+git clone https://github.com/riya-oss/ml-classification-dashboard.git
+cd ml-classification-dashboard
 
 # 2. Create Conda environment and activate
 conda create -n play_env python=3.11 -y
@@ -161,7 +163,7 @@ pip install -e .
 python src/models/run_training.py
 
 # 5. Launch the app
-streamlit run streamlit_app/app.py
+streamlit run app.py
 # Opens at http://localhost:8501
 ```
 
@@ -195,7 +197,7 @@ Upload it on the **Predictions** page to see a full end-to-end run: validation �
 ## Project Structure
 
 ```
-ml-assignment-2/
+ml-classification-dashboard/
 ├── test_data.csv                   # Root-level test CSV (submission convenience)
 ├── data/
 │   ├── raw/                        # Source data (Telco xlsx)
@@ -215,16 +217,10 @@ ml-assignment-2/
 │   ├── model_comparison.csv
 │   ├── model_analysis.md
 │   └── metrics/                    # Per-model timestamped JSONs
-├── streamlit_app/
-│   ├── app.py
-│   ├── utils.py
-│   ├── components/
-│   │   ├── metrics.py
-│   │   └── plots.py
-│   └── pages/
-│       ├── 1_Model_Comparison.py
-│       ├── 2_Predictions.py
-│       └── 3_Model_Insights.py
+├── utils.py                        # Shared data/model loading + inference helpers
+├── components/
+│   ├── metrics.py                  # Reusable metric widgets
+│   └── plots.py                    # Reusable plotting helpers
 ├── requirements.txt
 └── pyproject.toml
 ```
@@ -259,3 +255,21 @@ Quick pre-submission checks:
 - `test_data.csv` present at repository root
 - App entry point present (`app.py`)
 - Streamlit app opens without login blockers
+
+---
+
+## Assignment Compliance Notes
+
+This README follows the Section 3 / Step 5 structure from the assignment PDF:
+
+1. Problem statement
+2. Dataset description
+3. GitHub repository link
+4. Models used with comparison table (Accuracy, AUC, Precision, Recall, F1, MCC)
+5. Per-model observations and overall winner
+
+For final submission PDF, include this README content verbatim along with:
+
+1. Working GitHub repository link
+2. Public Streamlit app link
+3. BITS Virtual Lab execution screenshot

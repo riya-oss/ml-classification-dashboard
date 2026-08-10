@@ -6,9 +6,8 @@ import sys
 from pathlib import Path
 
 # ── Path setup ──────────────────────────────────────────────────────────────────
-_ROOT    = Path(__file__).resolve().parents[1]   # ml-assignment-2/
-_APP_DIR = _ROOT / "streamlit_app"               # utils + components
-for _p in [str(_APP_DIR), str(_ROOT / "src")]:
+_ROOT = Path(__file__).resolve().parents[1]
+for _p in [str(_ROOT), str(_ROOT / "src")]:
     if _p not in sys.path:
         sys.path.insert(0, _p)
 

@@ -13,10 +13,9 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 
 # ── Path setup ─────────────────────────────────────────────────────────────────
-_APP_DIR = Path(__file__).resolve().parent          # streamlit_app/
-_ROOT    = _APP_DIR.parent                          # ml-assignment-2/
+_ROOT = Path(__file__).resolve().parent
 
-for _p in [str(_ROOT / "src"), str(_APP_DIR)]:
+for _p in [str(_ROOT), str(_ROOT / "src")]:
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
