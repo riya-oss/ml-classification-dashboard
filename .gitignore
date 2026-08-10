@@ -43,9 +43,15 @@ Thumbs.db
 # Project artifacts
 models/*
 !models/.gitkeep
+!models/*.pkl
 reports/figures/*
 !reports/figures/.gitkeep
+!reports/figures/*.png
 reports/metrics/*
 !reports/metrics/.gitkeep
+!reports/metrics/**/*.json
+!reports/metrics/*.csv
+!reports/*.csv
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/telco_processed.csv
