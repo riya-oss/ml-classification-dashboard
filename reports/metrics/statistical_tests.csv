@@ -1,0 +1,20 @@
+feature,test,statistic,p_value,significant,mean_churn_yes,mean_churn_no,cramers_v
+Tenure Months,Mann-Whitney U,2515538.0,0.0,True,17.979,37.57,
+Monthly Charges,Mann-Whitney U,6003125.5,0.0,True,74.441,61.265,
+Total Charges,Mann-Whitney U,3360665.0,0.0,True,1531.796,2555.344,
+Senior Citizen,Chi-Square,159.43,0.0,True,,,0.1505
+Dependents,Chi-Square,433.73,0.0,True,,,0.2482
+Partner,Chi-Square,158.73,0.0,True,,,0.1501
+Online Security,Chi-Square,850.0,0.0,True,,,0.3474
+Internet Service,Chi-Square,732.31,0.0,True,,,0.3225
+Streaming TV,Chi-Square,374.2,0.0,True,,,0.2305
+Tech Support,Chi-Square,828.2,0.0,True,,,0.3429
+Online Backup,Chi-Square,601.81,0.0,True,,,0.2923
+Device Protection,Chi-Square,558.42,0.0,True,,,0.2816
+Streaming Movies,Chi-Square,375.66,0.0,True,,,0.231
+Payment Method,Chi-Square,648.14,0.0,True,,,0.3034
+Paperless Billing,Chi-Square,258.28,0.0,True,,,0.1915
+Contract,Chi-Square,1184.6,0.0,True,,,0.4101
+Multiple Lines,Chi-Square,11.33,0.003464,True,,,0.0401
+Phone Service,Chi-Square,0.92,0.338783,False,,,0.0114
+Gender,Chi-Square,0.48,0.486579,False,,,0.0083

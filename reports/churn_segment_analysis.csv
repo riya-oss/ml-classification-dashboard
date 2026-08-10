@@ -1,0 +1,15 @@
+segment,segment_value,total,churned,churn_rate
+Contract,Month-to-month,3875,1655,42.70967741935484
+Contract,One year,1473,166,11.269517990495586
+Contract,Two year,1695,48,2.831858407079646
+Internet Service,DSL,2421,459,18.95910780669145
+Internet Service,Fiber optic,3096,1297,41.89276485788114
+Internet Service,No,1526,113,7.404980340760157
+Tenure Band,0-12 mo,2175,1037,47.67816091954023
+Tenure Band,13-24 mo,1024,294,28.7109375
+Tenure Band,25-48 mo,1594,325,20.388958594730237
+Tenure Band,49-72 mo,2239,213,9.513175524787853
+Payment Method,Bank transfer (automatic),1544,258,16.709844559585495
+Payment Method,Credit card (automatic),1522,232,15.243101182654403
+Payment Method,Electronic check,2365,1071,45.28541226215645
+Payment Method,Mailed check,1612,308,19.106699751861044

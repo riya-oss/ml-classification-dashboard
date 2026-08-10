@@ -1,0 +1,23 @@
+feature,method,score,r_value,p_value,significant
+Contract,Point-Biserial r,0.39671262920984285,-0.3967,0.0,True
+Tenure Months,Point-Biserial r,0.3522286701130778,-0.3522,0.0,True
+Online Security,Point-Biserial r,0.28930899612232097,-0.2893,0.0,True
+Tech Support,Point-Biserial r,0.2824916082046531,-0.2825,0.0,True
+Dependents,Point-Biserial r,0.24854222642328347,-0.2485,0.0,True
+Total Charges,Point-Biserial r,0.19903683186929222,-0.199,0.0,True
+Online Backup,Point-Biserial r,0.19552501409217682,-0.1955,0.0,True
+Monthly Charges,Point-Biserial r,0.19335642223784713,0.1934,0.0,True
+Paperless Billing,Point-Biserial r,0.1918253316664693,0.1918,0.0,True
+Device Protection,Point-Biserial r,0.17813386106687717,-0.1781,0.0,True
+Senior Citizen,Point-Biserial r,0.15088932817647133,0.1509,0.0,True
+Partner,Point-Biserial r,0.15044754495917592,-0.1504,0.0,True
+Payment Method,Point-Biserial r,0.10706200587340398,0.1071,0.0,True
+Internet Service,Point-Biserial r,0.047291387683142255,-0.0473,7.2e-05,True
+Streaming Movies,Point-Biserial r,0.038491628519887536,-0.0385,0.001234,True
+Multiple Lines,Point-Biserial r,0.038036885606187266,0.038,0.001409,True
+Streaming TV,Point-Biserial r,0.03658099337318728,-0.0366,0.002137,True
+Phone Service,Point-Biserial r,0.011941980029002982,0.0119,0.316315,False
+Gender,Point-Biserial r,0.008612095078997637,-0.0086,0.469905,False
+Longitude,Point-Biserial r,0.004593811469422614,0.0046,0.699898,False
+Latitude,Point-Biserial r,0.003384436561631214,-0.0034,0.776425,False
+Zip Code,Point-Biserial r,0.003346480271183654,0.0033,0.778867,False

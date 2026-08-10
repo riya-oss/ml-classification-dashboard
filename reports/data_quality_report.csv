@@ -1,0 +1,34 @@
+,dtype,null_count,null_pct,unique_values,is_constant
+CustomerID,object,0,0.0,7043,False
+Count,int64,0,0.0,1,True
+Country,object,0,0.0,1,True
+State,object,0,0.0,1,True
+City,object,0,0.0,1129,False
+Zip Code,int64,0,0.0,1652,False
+Lat Long,object,0,0.0,1652,False
+Latitude,float64,0,0.0,1652,False
+Longitude,float64,0,0.0,1651,False
+Gender,object,0,0.0,2,False
+Senior Citizen,object,0,0.0,2,False
+Partner,object,0,0.0,2,False
+Dependents,object,0,0.0,2,False
+Tenure Months,int64,0,0.0,73,False
+Phone Service,object,0,0.0,2,False
+Multiple Lines,object,0,0.0,3,False
+Internet Service,object,0,0.0,3,False
+Online Security,object,0,0.0,3,False
+Online Backup,object,0,0.0,3,False
+Device Protection,object,0,0.0,3,False
+Tech Support,object,0,0.0,3,False
+Streaming TV,object,0,0.0,3,False
+Streaming Movies,object,0,0.0,3,False
+Contract,object,0,0.0,3,False
+Paperless Billing,object,0,0.0,2,False
+Payment Method,object,0,0.0,4,False
+Monthly Charges,float64,0,0.0,1585,False
+Total Charges,float64,11,0.16,6530,False
+Churn Label,object,0,0.0,2,False
+Churn Value,int64,0,0.0,2,False
+Churn Score,int64,0,0.0,85,False
+CLTV,int64,0,0.0,3438,False
+Churn Reason,object,5174,73.46,20,False
