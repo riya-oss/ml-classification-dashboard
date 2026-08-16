@@ -220,12 +220,18 @@ if has_labels:
     st.subheader("Step 6 — Evaluation Metrics")
     st.caption("Target column detected — computing evaluation metrics on this dataset.")
 
-    y_true = df_raw[TARGET_COL]
-    # Handle both 0/1 and Yes/No formats
-    if y_true.dtype == object:
-        y_true = (y_true == "Yes").astype(int)
-    else:
-        y_true = y_true.astype(int)
+    y_true_raw = df_raw[TARGET_COL]
+    # Normalize labels by value so pandas object, string, and numeric dtypes work.
+    y_true_text = y_true_raw.astype("string").str.strip().str.lower()
+    y_true = y_true_text.map({"yes": 1, "no": 0, "1": 1, "0": 0})
+    if y_true.isna().any():
+        invalid_labels = sorted(y_true_raw[y_true.isna()].astype(str).unique())
+        st.error(
+            "Unsupported `Churn Label` values: "
+            f"{', '.join(invalid_labels[:10])}. Use only Yes/No or 1/0."
+        )
+        st.stop()
+    y_true = y_true.astype(int)
 
     y_pred  = results["Churn Prediction"].values
     y_proba = results["Churn Probability"].values
