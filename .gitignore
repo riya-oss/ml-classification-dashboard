@@ -49,6 +49,7 @@ reports/figures/*
 !reports/figures/*.png
 reports/metrics/*
 !reports/metrics/.gitkeep
+!reports/metrics/*/
 !reports/metrics/**/*.json
 !reports/metrics/*.csv
 !reports/*.csv
