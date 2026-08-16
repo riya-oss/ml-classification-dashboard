@@ -140,9 +140,11 @@ Random Forest is the recommended production model because:
 
 ## Streamlit Application
 
-> ### 🚀 Live App: TO_BE_UPDATED_AFTER_PUBLIC_DEPLOYMENT
+> ### 🚀 Live App: https://ml-classification-dashboard-5yneh3ntlc24b9vwjx4rej.streamlit.app/
 
 Deployment target (required by assignment): **Streamlit Community Cloud**
+
+This is the final **public** Streamlit URL and it opens the interactive frontend without any sign-in prompt.
 
 ### Run Locally
 
@@ -152,7 +154,7 @@ git clone https://github.com/riya-oss/ml-classification-dashboard.git
 cd ml-classification-dashboard
 
 # 2. Create Conda environment and activate
-conda create -n play_env python=3.11 -y
+conda create -n play_env python=3.12 -y
 conda activate play_env
 
 # 3. Install dependencies
@@ -178,7 +180,7 @@ streamlit run app.py
 
 ### Demo Upload File
 
-A ready-to-use 50-row test CSV (with `Churn Label`) is included:
+A ready-to-use 100-row test CSV (with `Churn Label`) is included:
 
 ```
 test_data.csv
@@ -198,15 +200,39 @@ Upload it on the **Predictions** page to see a full end-to-end run: validation �
 
 ```
 ml-classification-dashboard/
-├── test_data.csv                   # Root-level test CSV (submission convenience)
+├── app.py                          # Streamlit app entrypoint
+├── README.md                       # Assignment README in the required format
+├── requirements.txt                # Cloud/runtime Python dependencies
+├── pyproject.toml                  # Minimal project metadata for deployment tooling
+├── runtime.txt                     # Pins Python version for Streamlit Cloud
+├── test_data.csv                   # Root-level 100-row test CSV required for submission
+├── utils.py                        # Shared app helpers for model/metrics loading
+├── components/
+│   ├── __init__.py
+│   ├── metrics.py                  # Reusable KPI cards and metric tables
+│   └── plots.py                    # Reusable charts and confusion matrix/ROC plots
+├── pages/
+│   ├── 1_Model_Comparison.py       # Side-by-side model comparison page
+│   ├── 2_Predictions.py            # CSV upload, predictions, and evaluation page
+│   └── 3_Model_Insights.py         # Single-model deep-dive page
 ├── data/
-│   ├── raw/                        # Source data (Telco xlsx)
-│   ├── processed/                  # telco_processed.csv
-│   └── test_data.csv               # 50-row demo file for Streamlit upload
+│   ├── raw/                        # Source Telco dataset
+│   ├── processed/                  # Processed training/inference dataset
+│   └── test_data.csv               # 100-row demo file for Streamlit upload
+├── docs/
+│   ├── dataset_notes.md
+│   ├── eda_summary.md
+│   ├── model_analysis.md
+│   └── streamlit_architecture.md
 ├── src/
+│   ├── data/
+│   │   ├── load_data.py            # Raw dataset loading helpers
+│   │   └── validate_data.py        # Data validation helpers
 │   ├── features/
 │   │   ├── preprocess.py           # clean → engineer → encode
 │   │   └── pipelines.py            # ColumnTransformer + train/test split
+│   ├── ml_classification_dashboard/
+│   │   └── __init__.py             # Package marker for deployment tooling
 │   └── models/
 │       ├── train.py                # fit, save, log metrics
 │       ├── evaluate.py             # metrics, confusion matrix, load helpers
@@ -214,62 +240,13 @@ ml-classification-dashboard/
 │       └── run_training.py         # trains all 6 models end-to-end
 ├── models/                         # Saved .pkl files (6 classifiers + pipeline)
 ├── reports/
-│   ├── model_comparison.csv
-│   ├── model_analysis.md
-│   └── metrics/                    # Per-model timestamped JSONs
-├── utils.py                        # Shared data/model loading + inference helpers
-├── components/
-│   ├── metrics.py                  # Reusable metric widgets
-│   └── plots.py                    # Reusable plotting helpers
-├── requirements.txt
-└── pyproject.toml
+│   ├── model_comparison.csv        # Final comparison table used in README
+│   ├── feature_rankings.csv
+│   ├── correlation_analysis.csv
+│   ├── data_quality_report.csv
+│   ├── churn_segment_analysis.csv
+│   ├── figures/                    # EDA and model-analysis figures
+│   └── metrics/                    # Per-model timestamped JSON evaluation logs
+└── notebooks/
+	└── 01_eda.ipynb                # Exploratory analysis notebook
 ```
-
----
-
-## Reproducibility
-
-| Component | Value |
-|---|---|
-| Random seed | 42 |
-| Train / test split | 80% / 20% stratified |
-| Class imbalance | `class_weight="balanced"` |
-| Preprocessing | Fit on train only, transform applied to test |
-| Saved pipeline | `models/preprocessing_pipeline.pkl` |
-
----
-
-## Mandatory Submission Artifacts
-
-Include the following in your **single PDF submission** in order:
-
-1. GitHub Repository Link
-2. Live Streamlit App Link
-3. Screenshot of assignment execution on BITS Virtual Lab
-4. Full README content
-
-Quick pre-submission checks:
-
-- `requirements.txt` present
-- `README.md` present
-- `test_data.csv` present at repository root
-- App entry point present (`app.py`)
-- Streamlit app opens without login blockers
-
----
-
-## Assignment Compliance Notes
-
-This README follows the Section 3 / Step 5 structure from the assignment PDF:
-
-1. Problem statement
-2. Dataset description
-3. GitHub repository link
-4. Models used with comparison table (Accuracy, AUC, Precision, Recall, F1, MCC)
-5. Per-model observations and overall winner
-
-For final submission PDF, include this README content verbatim along with:
-
-1. Working GitHub repository link
-2. Public Streamlit app link
-3. BITS Virtual Lab execution screenshot
