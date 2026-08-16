@@ -13,7 +13,7 @@ include = ["ml_classification_dashboard*"]
 package = false
 
 [project]
-name = "ml-classification-dashboard"
+name = "ml_classification_dashboard"
 version = "0.1.0"
 description = "Telco churn machine learning dashboard for assignment 2"
 readme = "README.md"
