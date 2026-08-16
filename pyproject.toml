@@ -9,6 +9,9 @@ package-dir = {"" = "src"}
 where = ["src"]
 include = ["ml_classification_dashboard*"]
 
+[tool.uv]
+package = false
+
 [project]
 name = "ml-classification-dashboard"
 version = "0.1.0"
